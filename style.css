@@ -1,0 +1,21 @@
+*{
+    padding :0;
+    margin: 0;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+/*HEADER & FOOTER*/
+header, footer{
+    background-color: grey;
+    height: 5rem;
+}
+
+/*MAIN -------*/
+
+
+/*CARD -------*/
+.container-card{
+    width: 25%;
+    border: solid 1px;
+    height: 10rem;
+}
