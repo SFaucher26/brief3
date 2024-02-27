@@ -1,58 +1,75 @@
-window.addEventListener('load', () => {
-    const apiUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc'
-    const options = {
-        method: 'GET',
-        headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZjViOWQ4NTQzODM2OGYxMzg2OTc3MzlkMDY3NmU5MCIsInN1YiI6IjY1ZGI2NDU5ODI2MWVlMDE4NWMyZmE3OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EqaglO-GjtRSZOQomGgTqN6cuNF7LE1oecefis70Kds '
-        }
-      };
-      
-    fetch(apiUrl, options)
-        .then(response => response.json())
-        .then(data => {
-          const movies = data.results;
-          console.log(movies)
+window.addEventListener("load", () => {
+  const apiUrl =
+    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
+  const options = {
+    method: "GET",
+    headers: {
+      accept: "application/json",
+      Authorization:
+        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZjViOWQ4NTQzODM2OGYxMzg2OTc3MzlkMDY3NmU5MCIsInN1YiI6IjY1ZGI2NDU5ODI2MWVlMDE4NWMyZmE3OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EqaglO-GjtRSZOQomGgTqN6cuNF7LE1oecefis70Kds ",
+    },
+  };
 
-  
-          //boucle sur les films 
-          for(const movie of movies){
-            //je crée mon élément de card pour chaque film
-            console.log(movie.title)
-            console.log(movie.overview)
-            console.log(movie.poster_path)
-              
-          }
+  fetch(apiUrl, options)
+    .then((response) => response.json())
+    .then((data) => {
+      const movies = data.results;
+      console.log(movies);
 
+      //je crée le main qui contiendra les cards de film
+      createElement("section",'container-display', "main");
 
-        })
-        .catch(err => console.error(err));
-
-        
-       
-        createElement('main','container-main','body');
-     
-
-})
-
-
-const createElement =(elem, name ,location) => {
-    const element = document.createElement(elem);
-    if(name !== ''){
-      element.classList.add(name)
-    }
-    const inDocHtml = document.querySelector(location);
-    inDocHtml.appendChild(element);
-    return element;
-}
-
-// const createElementWithText = (tagName, content) =>{
-//   const element = document.createElement(tagName)
-//   p.innerText = content
-//   return element
-// }
+      //boucle sur les films pour créer l'affichage dans la card
+      for (const movie of movies) {
+        //je crée l'élément card qui affichera chaque film
+        const card = createElement("div", "container-card", ".container-display");
+        //titre
+        const h3 = createElement("h3", "titre", card);
+        h3.innerHTML = movie.title;
+        //img
+        const img = createElement("img", "affiche", card);
+        img.url = `https://image.tmdb.org/t/p/w500/`;
+        img.src = img.url + movie.poster_path;
+        //description
+        const p = createElement("p", "description", card);
+        p.innerHTML = movie.overview;
+        //note
+        const note = createElement("p", 'note', card);
+        note.innerHTML = "Note moyenne : " + Math.ceil(movie.vote_average);
 
 
+        // console.log(movie.title)
+        // console.log(movie.overview)
+        // console.log(movie.poster_path)
+      }
+    })
+    .catch((err) => console.error(err));
+});
+
+/**
+ * @param {string} elem Element tag to create
+ * @param {string} name Class name to init the elem
+ * @param {string | Element} location Where to create the elem in the DOM
+ *
+ * @returns {Element}
+ */
+const createElement = (elem, name, location) => {
+  const element = document.createElement(elem);
+  if (name !== "") {
+    element.classList.add(name);
+  }
+  let inDocHtml;
+  if (location instanceof Element) {
+    // Si c'est un élément HTML
+    inDocHtml = location;
+  } else {
+    // Si c'est une string
+    inDocHtml = document.querySelector(location);
+  }
+
+  inDocHtml.appendChild(element);
+  return element;
+};
 
 // const displayData =(element) => {
 //     const filmDiv = createElement('div','film-container');
