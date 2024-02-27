@@ -1,29 +1,34 @@
+let apiDatas;
 window.addEventListener('load', () => {
     const apiUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc'
     const options = {
         method: 'GET',
         headers: {
-          accept: 'application/json',
-          Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZjViOWQ4NTQzODM2OGYxMzg2OTc3MzlkMDY3NmU5MCIsInN1YiI6IjY1ZGI2NDU5ODI2MWVlMDE4NWMyZmE3OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EqaglO-GjtRSZOQomGgTqN6cuNF7LE1oecefis70Kds '
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZjViOWQ4NTQzODM2OGYxMzg2OTc3MzlkMDY3NmU5MCIsInN1YiI6IjY1ZGI2NDU5ODI2MWVlMDE4NWMyZmE3OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EqaglO-GjtRSZOQomGgTqN6cuNF7LE1oecefis70Kds '
         }
       };
     fetch(apiUrl, options)
         .then(response => response.json())
-        .then(response => console.log(response))
+        .then(response => {
+            apiDatas = response;
+        })
         .catch(err => console.error(err));
 })
 
 
-const createElement =(elem,name ,location) => {
+const createElement =(elem ,name ,location) => {
     const element = document.createElement(elem);
-    element.classList.add(name);
-    inDocHtml = document.querySelector(location);
+    if (name!==''){
+        element.classList.add(name);
+    }
+    const inDocHtml = document.querySelector(location);
     inDocHtml.appendChild(element);
     return element;
 }
 
-// createElement('main','container-main','body');
-// createElement('div', 'container-img','main');
+createElement('main','','body');
+createElement('div', 'container-img','main');
 
 // const displayData =(element) => {
 //     const filmDiv = createElement('div','film-container');
