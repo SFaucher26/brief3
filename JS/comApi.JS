@@ -36,8 +36,9 @@ window.addEventListener("load", () => {
         //note
         const note = createElement("p", 'note', card);
         note.innerHTML = "Note moyenne : " + Math.ceil(movie.vote_average);
-
-
+        //date sortie
+        const dateSortie = createElement("p", "date-sortie", card)
+        dateSortie.innerHTML = "Date de sortie : " + movie.release_date
         // console.log(movie.title)
         // console.log(movie.overview)
         // console.log(movie.poster_path)
@@ -70,6 +71,25 @@ const createElement = (elem, name, location) => {
   inDocHtml.appendChild(element);
   return element;
 };
+
+const dateFormatter = new Intl.DateTimeFormat('en', {
+  year: 'numeric',
+  month: "2-digit",
+  day: "2-digit"
+})
+
+/**
+ * 
+ * @param {Date} date Date object to format in string 'yyyy/mm/dd'
+ * @returns {string}
+ */
+function formatDateToString(date) {
+  return dateFormatter
+    .format(date)
+    .split('/')
+    .reverse()
+    .join('/')
+}
 
 // const displayData =(element) => {
 //     const filmDiv = createElement('div','film-container');
