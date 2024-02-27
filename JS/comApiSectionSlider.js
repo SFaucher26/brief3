@@ -2,8 +2,15 @@ let inputBtnNext= document.querySelector('.input-next');
 let inputBtnPrev= document.querySelector('.input-prev');
 let imgSlider= document.querySelector('.img-slider');
 let titleSlider = document.querySelector('.slider-title');
-let filmDatas;
+let checkboxes = document.querySelectorAll('.checkbox');
+// let filmDatas;
 let indexFilm;
+/*================================================ */
+window.addEventListener('load', () => {
+    fetchData(url,options);
+    indexFilm=0; // initialisation indexFilm pour le slider
+    checkboxes[2].checked =true;
+});
 
 /*=========================END POINT listes de films==================== */  
       const apiUrl = 'https://api.themoviedb.org/3/discover/movie';
@@ -16,7 +23,7 @@ let indexFilm;
     /*URL DES IMAGES ORIGINAL */
     const baseImgUrl = 'https://image.tmdb.org/t/p/original'
   
-    /* Construction de la requete et de ses params (headers, query) */
+    /*=====Construction de la requete et de ses params (headers, query)===*/
       const options = {
         method: 'GET',
         headers: {
@@ -30,6 +37,7 @@ let indexFilm;
       
 /*=========Options de filtrage de l'API injectées en url ================*/
       let releaseDate = '2024-02-27'
+      
       const queryParams = {
         'include_adult' : 'false',
         'include_video' : 'false',
@@ -48,7 +56,6 @@ let indexFilm;
 /*======================================================================== */
 
 /*=============================FETCH =============================*/
-   
 const fetchData = () => {
     fetch(url, options)
       .then(response => response.json())
@@ -61,7 +68,6 @@ const fetchData = () => {
 /*======================================================================== */
 
 /*================INITIALISATION SLIDER============*/
-
 const setCardSlider = (data,indexFilm) => {
     let imgUrl = baseImgUrl + data[indexFilm].poster_path;
     imgSlider.setAttribute('src', imgUrl);
@@ -80,23 +86,27 @@ inputBtnNext.addEventListener('click',() => {
     setCardSlider(filmDatas,indexFilm);
 })
 
-// inputBtnPrev.addEventListener('click',() => {
-//     // console.log("Log bouton next: ",filmDatas);
-//     if(indexFilm == 0){
+inputBtnPrev.addEventListener('click',() => {
+    // console.log("Log bouton next: ",filmDatas);
+    if(indexFilm == 0){
         
-//         indexFilm = filmDatas.length;
-//     } else {
-//         indexFilm =--
-//     };
-//     console.log(indexFilm);
+        indexFilm = filmDatas.length -1;
+    } else {
+        indexFilm --
+    };
+    setCardSlider(filmDatas,indexFilm);
+})
 
-//     // setCardSlider(filmDatas,indexFilm);
-// })
+//Checkbox Options de Filtrage 
+  checkboxes.forEach(element => {
+    element.addEventListener('change', (e) => {
+      if (e.target.checked) {
+        console.log(`Case cochée: ${e.target.id}`);
+      }
+    })
+  })     
+      
 
-/*================================================ */
-window.addEventListener('load', () => {
-    fetchData();
-    indexFilm=0; // initialisation indexFilm pour le slider
-});
+
 
 

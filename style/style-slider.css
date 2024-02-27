@@ -1,15 +1,17 @@
-input {
-    width: 50px;
-    height: 150px;
+.input-next, .input-prev {
+    width: 200px;
+    height: 70px;
     border-radius: 5px;
     box-shadow: -10px -10px 15px black;
+    font-size: 2rem;
 
 }
 
 .container-slider {
     display: flex;
+    padding: 15px;
     min-height: 35vh;
-    justify-content: space-around;
+    justify-content: space-between;
     background-color: darkslateblue;
     align-items: center;
     border-top:3px solid gray;
@@ -19,11 +21,9 @@ input {
     display: flex;
     flex-direction: column;
     height: 60%;
-    width: 30%;
+    width: 40%;
     padding-top: 15px;
     padding-bottom: 15px;
-    
-    
 }
 
 .container-img {
@@ -46,3 +46,16 @@ input {
     font-size: 1.5rem;
     font-weight: bold;
 }
+
+.container-slider-chekboxs {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    font-size: 1.1rem;
+    font-weight: bold;
+}
+
+/* .checkboxs {
+    display: flex;
+    flex-direction: row;
+} */

@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script defer src="./JS/com2Api.JS"></script>
-    <script defer type="module" src="./JS/comApi.JS"></script>
+    <script defer type="module" src="./JS/comApiSectionDisplay.JS"></script>
+    <script defer src="./JS/comApiSectionSlider.js"></script>
     <script defer type ="module" src="./JS/injectionHF.js"></script>
     <link rel="stylesheet" href="/style/style.css">
     <link rel="stylesheet" href="/style/style-slider.css">
@@ -23,7 +23,7 @@
         </section>
         <section class="container-slider">
             <div class="slider-btn">
-                <input class="input-prev" type="submit" value="<">
+                <input class="input-prev" type="submit" value="⟪">
             </div>
             <div class="container-slider-card">
                 <div class="container-img">
@@ -34,7 +34,20 @@
                 </div>
             </div>
             <div class="slider-btn">
-                <input class="input-next" type="submit" value=">">
+                <input class="input-next" type="submit" value="⟫">
+            </div>
+        </section>
+        <section class="checkboxs">
+            <div class="container-slider-chekboxs">
+                <label for="radio">Filter by release date
+                    <input class="checkbox" type="radio" name="choix" id="choix1">
+                </label>
+                <label for="radio">Filter by year
+                    <input class="checkbox" type="radio" name="choix" id="choix2">
+                </label>
+                <label for="radio">Filter by popularity
+                    <input class="checkbox" type="radio" name="choix" id="choix3">
+                </label>
             </div>
         </section>
     </main>
