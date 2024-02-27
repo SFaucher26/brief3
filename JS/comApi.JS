@@ -91,15 +91,4 @@ function formatDateToString(date) {
     .join('/')
 }
 
-// const displayData =(element) => {
-//     const filmDiv = createElement('div','film-container');
 
-//     const pEl = createElement('p','title');
-//     pEl.textContent = element.original_title;
-//     const filmImg = createElement('img','film-img');
-//     const image_url = new URL(`https://image.tmdb.org/t/p/w500${element.poster_path}`);
-//     filmImg.setAttribute ('src', `${image_url}.poster_path`);
-//     const overview = createElement('p', 'overview');
-//     overview.textContent = element.overview;
-//     filmDiv.appendChild(pEl,filmImg,overview);
-// }

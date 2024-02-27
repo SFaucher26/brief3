@@ -6,8 +6,28 @@
 
 /*HEADER */
 header {
-  height: 5rem;
+  height: 15vh;
   background-color: black;
+  display: flex;
+  justify-content: center;
+  flex-wrap: nowrap;
+  justify-content: center;
+  justify-content: space-between;
+  align-items: center;
+}
+.logo {
+  width: 10vw;
+  max-height: 90%;
+  margin: 10px;
+  border-radius: 5px;
+}
+h1 {
+  color: darkgrey;
+  font-size: 30px;
+  text-align: center;
+}
+.pop-corn {
+  max-height: 80%;
 }
 
 /*MAIN -------*/
@@ -20,6 +40,16 @@ section.container-display {
   justify-content: space-evenly;
   flex-wrap: wrap;
   background-color: rgb(212, 148, 148);
+}
+
+/*FOOTER */
+footer {
+  height: 5vh;
+  background-color: black;
+  color: darkgrey;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 /*CARD -------*/
@@ -53,9 +83,9 @@ section.container-display {
   text-align: center;
   margin: 5px;
 }
-.note{
-    font-weight: 600;
+.note {
+  font-weight: 600;
 }
-.date-sortie{
-    font-weight: 600;
+.date-sortie {
+  font-weight: 600;
 }
