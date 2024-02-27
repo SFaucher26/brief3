@@ -1,3 +1,14 @@
+let apiDatas;
+window.addEventListener('load', () => {
+    const apiUrl = 'https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc'
+    const options = {
+        method: 'GET',
+        headers: {
+        accept: 'application/json',
+        Authorization: 'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZjViOWQ4NTQzODM2OGYxMzg2OTc3MzlkMDY3NmU5MCIsInN1YiI6IjY1ZGI2NDU5ODI2MWVlMDE4NWMyZmE3OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EqaglO-GjtRSZOQomGgTqN6cuNF7LE1oecefis70Kds '
+        }
+      };
+    
 window.addEventListener("load", () => {
   const apiUrl =
     "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
@@ -15,6 +26,7 @@ window.addEventListener("load", () => {
     .then((data) => {
       const movies = data.results;
       console.log(movies);
+
 
       //je crée le main qui contiendra les cards de film
       createElement("section",'container-display', "main");
@@ -90,5 +102,4 @@ function formatDateToString(date) {
     .reverse()
     .join('/')
 }
-
 
