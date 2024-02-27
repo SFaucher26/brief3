@@ -1,9 +1,11 @@
-let inputBtn= document.querySelector('input');
-let imgTest= document.querySelector('.img-test');
+let inputBtnNext= document.querySelector('.input-next');
+let inputBtnPrev= document.querySelector('.input-prev');
+let imgSlider= document.querySelector('.img-slider');
+let titleSlider = document.querySelector('.slider-title');
+let filmDatas;
+let indexFilm;
 
-// window.addEventListener('load', () => {
-  inputBtn.addEventListener('click', () =>{
-    /*END POINT listes de films */  
+/*=========================END POINT listes de films==================== */  
       const apiUrl = 'https://api.themoviedb.org/3/discover/movie';
     /*END POINT listes des genres */  
       // const apiUrl = 'https://api.themoviedb.org/3/genre/movie/list';
@@ -24,30 +26,77 @@ let imgTest= document.querySelector('.img-test');
 
         }
       };
+/*====================================================================== */
+      
+/*=========Options de filtrage de l'API injectées en url ================*/
       let releaseDate = '2024-02-27'
       const queryParams = {
         'include_adult' : 'false',
         'include_video' : 'false',
         'language' : 'en-US',
         'page' : 1,
-        // 'sort_by' : 'popularity.desc',
-        'sort_by' : 'primary_release_date.asc',
+        'sort_by' : 'popularity.desc',
+        // 'sort_by' : 'primary_release_date.asc',
+        // 'primary_release_date.gte' : releaseDate,
         // 'primary_release_date.gte' : releaseDate,
         // 'primary_release_date.lte' : '2024-01-15',
-        'release_date.gte' : releaseDate,
         // 'year' : 2023
       };
-
       const queryString = new URLSearchParams(queryParams).toString();
       const url = apiUrl+ '?' + queryString;
       console.log(url);
-      
+/*======================================================================== */
 
-      fetch(url, options)
-        .then(response => response.json())
-        .then(response => {
-          let data = response.results;
-          console.log(data);
-        })
-        .catch(err => console.error(err));   
+/*=============================FETCH =============================*/
+   
+const fetchData = () => {
+    fetch(url, options)
+      .then(response => response.json())
+      .then(response => {
+        filmDatas = response.results;
+        setCardSlider(filmDatas,indexFilm);
+      })
+      .catch(err => console.error(err));   
+}
+/*======================================================================== */
+
+/*================INITIALISATION SLIDER============*/
+
+const setCardSlider = (data,indexFilm) => {
+    let imgUrl = baseImgUrl + data[indexFilm].poster_path;
+    imgSlider.setAttribute('src', imgUrl);
+    titleSlider.textContent = data[indexFilm].title;
+}
+/*================================================ */
+
+inputBtnNext.addEventListener('click',() => {
+    // console.log("Log bouton next: ",filmDatas);
+    if(indexFilm != 19){
+        indexFilm ++;
+    } else {
+        indexFilm =0
+    };
+
+    setCardSlider(filmDatas,indexFilm);
 })
+
+// inputBtnPrev.addEventListener('click',() => {
+//     // console.log("Log bouton next: ",filmDatas);
+//     if(indexFilm == 0){
+        
+//         indexFilm = filmDatas.length;
+//     } else {
+//         indexFilm =--
+//     };
+//     console.log(indexFilm);
+
+//     // setCardSlider(filmDatas,indexFilm);
+// })
+
+/*================================================ */
+window.addEventListener('load', () => {
+    fetchData();
+    indexFilm=0; // initialisation indexFilm pour le slider
+});
+
+
