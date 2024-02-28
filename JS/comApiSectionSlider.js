@@ -76,6 +76,9 @@ const setCardSlider = (data, indexFilm) => {
   let imgUrl = baseImgUrl + data[indexFilm].poster_path;
   imgSlider.setAttribute("src", imgUrl);
   titleSlider.textContent = data[indexFilm].title;
+  imgSlider.addEventListener('click', ()=>{
+    document.location.href = `/details.html?film=${data[indexFilm].id}`
+  })
 };
 /*================================================ */
 
@@ -149,7 +152,7 @@ function addListeners() {
           };
           const url = createUrl(queryParams,apiUrl1);
           movies = await fetchData(queryParams);
-        } )
+        })
       }
     })
   })
