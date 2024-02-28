@@ -3,7 +3,7 @@ export function createMovieCard(movie, dest) {
   const card = createElement("div", "container-card", dest);
 
   //titre
-  const h3 = createElement("h2", "titre", card);
+  const h3 = createElement("h3", "titre", card);
   h3.innerHTML = movie.title;
   //img
   const img = createElement("img", "affiche", card);
