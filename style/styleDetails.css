@@ -1,0 +1,63 @@
+body{
+    background-color: rgb(212, 148, 148);
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+main{
+padding: 50px;
+display: flex;
+justify-content: center;
+}
+h1{
+    color: black;
+}
+.container-card {
+    min-width: 300px;
+    width: 80%;
+    height: auto;
+    padding: 30px;
+    margin: 10px;
+    background-color: aliceblue;
+    border-radius: 10px;
+    box-shadow: -10px -10px 15px black;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+  }
+  .container-card > h3 {
+    font-size: xx-large;
+    text-align: center;
+    margin: 5px;
+  }
+  .container-card > p {
+    font-size: 1rem;
+    max-width: 600px;
+    width: 100%;
+    margin: 5px;
+    padding: 15px;
+  }
+  .container-card > img {
+    width: 600px;
+    text-align: center;
+    margin: 5px;
+  }
+  .note {
+    font-weight: 600;
+    font-size: xx-large;
+    padding: 20px;
+  }
+  .date-sortie {
+    font-weight: 600;
+  }
+  .tag{
+    font-size: 700;
+  }
+  .genre{
+    font-weight: 700;
+    text-align: center;
+  }
+  iframe{
+    width: 600px;
+    height: 450px;
+  }

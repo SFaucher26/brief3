@@ -8,12 +8,12 @@ const options = {
 };
 
 export function findMovie(id_movie) {
-  let url = "https://api.themoviedb.org/3/movie/" + id_movie + "?language=en-US";
+  let url = "https://api.themoviedb.org/3/movie/" + id_movie + "?&language=fr";
   return fetch(url, options).then((response) => response.json());
 }
 export function findVideo(id_movie){
   let url = "https://api.themoviedb.org/3/movie/" + id_movie +
-  "/videos?language=fr";
+  "/videos?&language=fr";
   return fetch(url , options).then((response) => response.json());
 }
 

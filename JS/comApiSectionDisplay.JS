@@ -5,7 +5,7 @@ window.addEventListener("load", () => {
   listMovies({
     include_adult: false,
     include_video: false,
-    language: "en-US",
+    language: "fr",
     page: 1,
     sort_by: "popularity.desc",
   })
