@@ -3,7 +3,7 @@ export function createMovieCard(movie, dest) {
   const card = createElement("div", "container-card", dest);
 
   //titre
-  const h3 = createElement("h3", "titre", card);
+  const h3 = createElement("h2", "titre", card);
   h3.innerHTML = movie.title;
   //img
   const img = createElement("img", "affiche", card);
@@ -30,7 +30,7 @@ export function createMovieDetails(movie, videos, dest) {
   const card = createElement("div", "container-card", dest);
 
   //Tag line
-  const tagline = createElement("h1", "tag", card);
+  const tagline = createElement("h2", "tag", card);
   tagline.innerHTML = movie.tagline;
   // Titre original
   const titreOriginal = createElement('h2', 'titre-original', card);
