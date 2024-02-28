@@ -24,6 +24,7 @@ window.addEventListener("load", () => {
       for (const movie of movies) {
         //je crée l'élément card qui affichera chaque film
         const card = createElement("div", "container-card", ".container-display");
+        card.id = movie.id;
         //titre
         const h3 = createElement("h3", "titre", card);
         h3.innerHTML = movie.title;
@@ -43,10 +44,21 @@ window.addEventListener("load", () => {
         // console.log(movie.title)
         // console.log(movie.overview)
         // console.log(movie.poster_path)
+        // console.log(movie.id);
       }
+      card.addEventListener('click', () =>{
+        
+  
+      })
+
+
+
     })
     .catch((err) => console.error(err));
 });
+
+
+
 
 /**
  * @param {string} elem Element tag to create
