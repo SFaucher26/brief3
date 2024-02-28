@@ -8,6 +8,7 @@ let checkboxes;
 // let filmDatas;
 let indexFilm;
 /*================================================ */
+
 window.addEventListener("load", async () => {
   inputBtnNext = document.querySelector(".input-next");
   inputBtnPrev = document.querySelector(".input-prev");
@@ -20,27 +21,28 @@ window.addEventListener("load", async () => {
   checkboxes[2].checked = true;
 });
 
+
 /*=========================END POINT listes de films==================== */
-const apiUrl = "https://api.themoviedb.org/3/discover/movie";
+const apiUrl1 = 'https://api.themoviedb.org/3/discover/movie';
 /*END POINT listes des genres */
-// const apiUrl = 'https://api.themoviedb.org/3/genre/movie/list';
+const apiUrl2 = 'https://api.themoviedb.org/3/genre/movie/list';
 /*END POINT latest, get the newest movies */
-// const baseUrl = 'https://api.themoviedb.org/3/movie/latest';
+const apiUrl3 = 'https://api.themoviedb.org/3/movie';
 /*URL DES IMAGES WIDTH 500 */
 // const baseImgUrl = 'https://image.tmdb.org/t/p/w500'
 /*URL DES IMAGES ORIGINAL */
-const baseImgUrl = "https://image.tmdb.org/t/p/original";
-/*====================================================================== */
+const baseImgUrl = 'https://image.tmdb.org/t/p/original'
 
-/*=========Options de filtrage de l'API injectées en url ================*/
-let releaseDate = "2024-02-27";
+/*=========Options de filtrage de l'API injectées en url: ================*/
+/*========= Playing now chargé par défault au chargement ================*/
+let releaseDate = '2024-02-27'
 
 const queryParams = {
-  include_adult: "false",
-  include_video: "false",
-  language: "en-US",
-  page: 1,
-  sort_by: "popularity.desc",
+  // 'include_adult' : 'false',
+  // 'include_video' : 'false',
+  'language': 'en-US',
+  'page': 1,
+  // 'sort_by' : 'popularity.desc',
   // 'sort_by' : 'primary_release_date.asc',
   // 'primary_release_date.gte' : releaseDate,
   // 'primary_release_date.gte' : releaseDate,
@@ -48,7 +50,8 @@ const queryParams = {
   // 'year' : 2023
 };
 const queryString = new URLSearchParams(queryParams).toString();
-const url = apiUrl + "?" + queryString;
+const url = apiUrl3 + '/now_playing' + '?' + queryString;
+// const url ='https://api.themoviedb.org/3/movie/now_playing?language=en-US&page=1'
 console.log(url);
 /*======================================================================== */
 
@@ -94,12 +97,34 @@ function addListeners(filmDatas) {
     setCardSlider(filmDatas, indexFilm);
   });
 
-  //Checkbox Options de Filtrage
-  checkboxes.forEach((element) => {
-    element.addEventListener("change", (e) => {
-      if (e.target.checked) {
-        console.log(`Case cochée: ${e.target.id}`);
+  //Checkbox Options de Filtrage 
+  checkboxes.forEach(element => {
+    element.addEventListener('change', (e) => {
+      console.log(e.target.id);
+      if (e.target.id === 'choix1') {
+        const queryParams = {
+          'language': 'en-US',
+          'page': 1,
+        };
+        // console.log(`Case cochée: ${e.target.id}`,' Query Param: ',queryParams);
+      } else if (e.target.id === 'choix2') {
+        const queryParams = {
+          'language': 'en-US',
+          'page': 1,
+        };
+        // console.log(`Case cochée: ${e.target.id}`,' Query Param: ',queryParams);
+
+      } else {
+        document.querySelector('.cb3-in-div').classList.remove('inactive');
+        const queryParams = {
+          'language': 'en-US',
+          'year': 2023,
+          'page': 1
+        };
+        console.log(`Case cochée: ${e.target.id}`, ' Query Param: ', queryParams);
+
       }
-    });
-  });
+    })
+  })
+
 }

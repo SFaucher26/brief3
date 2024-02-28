@@ -65,12 +65,21 @@
     font-size: 1.1rem;
     font-weight: bold;
 }
-
-/* .checkboxs {
+label {
     display: flex;
-    flex-direction: row;
-} */
+    align-items: center;
+}
 
+.cb3-in-div {
+    display: flex;
+}
+.cb3 {
+border-radius: 5px;
+}
+
+.inactive {
+display: none;
+}
 
 /* Media Query pour les écrans de téléphone portable */
 @media only screen and (max-width: 767px) {
