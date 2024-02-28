@@ -4,22 +4,6 @@
     box-sizing: border-box;
 }
 
-header {
-    height: 10vh;
-    width: 100%;
-    background: gray;
-}
-
-footer {
-    height: 5vh;
-    width: 100%;
-    background: gray;
-
-}
-
-.container-display {
-height: 50vh;
-}
 
 input {
     width: 50px;

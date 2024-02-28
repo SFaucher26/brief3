@@ -9,17 +9,6 @@ window.addEventListener('load', () => {
         }
       };
     
-window.addEventListener("load", () => {
-  const apiUrl =
-    "https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=popularity.desc";
-  const options = {
-    method: "GET",
-    headers: {
-      accept: "application/json",
-      Authorization:
-        "Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiI1ZjViOWQ4NTQzODM2OGYxMzg2OTc3MzlkMDY3NmU5MCIsInN1YiI6IjY1ZGI2NDU5ODI2MWVlMDE4NWMyZmE3OSIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.EqaglO-GjtRSZOQomGgTqN6cuNF7LE1oecefis70Kds ",
-    },
-  };
 
   fetch(apiUrl, options)
     .then((response) => response.json())
@@ -35,6 +24,7 @@ window.addEventListener("load", () => {
       for (const movie of movies) {
         //je crée l'élément card qui affichera chaque film
         const card = createElement("div", "container-card", ".container-display");
+        card.id = movie.id;
         //titre
         const h3 = createElement("h3", "titre", card);
         h3.innerHTML = movie.title;
@@ -54,10 +44,21 @@ window.addEventListener("load", () => {
         // console.log(movie.title)
         // console.log(movie.overview)
         // console.log(movie.poster_path)
+        // console.log(movie.id);
       }
+      card.addEventListener('click', () =>{
+        
+  
+      })
+
+
+
     })
     .catch((err) => console.error(err));
 });
+
+
+
 
 /**
  * @param {string} elem Element tag to create
