@@ -17,8 +17,10 @@ export function createMovieCard(movie, dest) {
   note.innerHTML = "Note moyenne : " + Math.ceil(movie.vote_average);
   //date sortie
   const dateSortie = createElement("p", "date-sortie", card);
-  dateSortie.innerHTML = "Date de sortie : " + movie.release_date;
-
+  const date = movie.release_date;
+  const maDate = new Date(date)
+  dateSortie.innerHTML = "Date de sortie : " + maDate.toLocaleDateString('fr');
+  
   return card;
 }
 export function createMovieDetails(movie, videos, dest) {
@@ -30,7 +32,9 @@ export function createMovieDetails(movie, videos, dest) {
   //Tag line
   const tagline = createElement("h1", "tag", card);
   tagline.innerHTML = movie.tagline;
-
+  // Titre original
+  const titreOriginal = createElement('h2', 'titre-original', card);
+  titreOriginal.innerHTML = movie.original_title;
   // genre
   const genre = createElement("p", "genre", card);
   const genres = movie.genres.map((e) => {
@@ -49,8 +53,11 @@ export function createMovieDetails(movie, videos, dest) {
   const note = createElement("p", "note", card);
   note.innerHTML = "Note moyenne : " + Math.ceil(movie.vote_average);
   //date sortie
+
   const dateSortie = createElement("p", "date-sortie", card);
-  dateSortie.innerHTML = "Date de sortie : " + movie.release_date;
+  const date = movie.release_date;
+  const maDate = new Date(date)
+  dateSortie.innerHTML = "Date de sortie : " + maDate.toLocaleDateString('fr');
 
   //video
   if (video) {

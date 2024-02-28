@@ -45,7 +45,7 @@ section.container-display {
 
 /*FOOTER */
 footer {
-  height: 15vh;
+  height: 10vh;
   background-color: black;
   color: darkgrey;
   display: flex;
