@@ -1,25 +1,46 @@
-# Attendus du projet #
+# Projet Brief3 : Affichage de films #
 Réalisation d'une page web qui affiche des films récupérés à l'aide de l'API The Movie Data Base.
 
 ### Langages utilisés ###
 HTML, CSS, JAVASCRIPT
 
+### Démarer le projet ###
+- sur la page index.html dans vscode, cliquer sur Golive en bas à droite (disponible grace à l'extension live serveur).
+- le projet s'affiche sur un port url :
+
+![alt text](./assets/portServer.png)
+
 ### Méthode de travail ###
 Projet développé en Agile à l'aide d'un tableau kanban avec création d'issues
 
+![alt text](./assets/kanban.png)
+
 ### Structure des pages ###
 
-=> 
+![alt text](./assets/structureProjet.png)
+
+En ajoutant un attribut type="module" dans la balise "script" des fichiers.html avec lesquels il interagit, celui-ci 
+peut être importé dans un autre fichier.js afin de rendre ses fonctions disponibles
+
+Exemple sur les captures suivantes :
+
+![alt text](./assets/typeModule.png)
+
+![alt text](./assets/importFichierJs.png)
 
 ### Fetch API ###
+Ce fichier.js permet de réaliser les appels API
 
-=>
+Cf workflow
 
 ### Création des cards pour affichage ###
 
-=> 
+Création de nos cards à l'aide d'une fonction 
+
+![alt text](./assets/createElement.png)
 
 ### Création du slider avec filtrage en fetch API ###
+
  
  ** Listes des tâches correspondantes **
 
@@ -78,11 +99,24 @@ La page html s'appuie sur 3 scripts qui servent le projet global selon les secti
 
 Concernant le slider, il s'agit de JS\comApiSectionSlider.js qui s'appuie sur un import de fonction (listMovies) de JS\apiFetch.js concernant les requête API de filtrage.
 
-
 ### Page détail ###
 
+Pour réaliser la page d'accueil :
+- création d'une nouvelle page details.html
+- Récupération de l'id du film avec la synthaxe :
 
+![alt text](./assets/searchId.png)
 
+- passae de la variable id_movie dans les fonctions fetch
 
+Exemple :
 
+![alt text](./assets/passageId.png)
+
+- code de l'écoute d'évènement au clic sur la card :
+
+Pour chaque film récupéré on affiche une card 
+et au clic sur celle-ci le film s'affiche dans la page détail
+
+![alt text](./assets/AddEventListener.png)
 
