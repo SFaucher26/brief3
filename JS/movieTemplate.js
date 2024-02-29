@@ -62,8 +62,11 @@ export function createMovieDetails(movie, videos, dest) {
   //video
   if (video) {
     const videoEl = createElement("iframe", "video", card);
-    videoEl.outerHTML = `<iframe width="1097" height="617" src="https://www.youtube.com/embed/${video.key}" title="${video.name}" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>`;
+    videoEl.outerHTML = `<iframe width="1097" height="617" src="https://www.youtube.com/embed/${video.key}" title="${video.name}" 
+    frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    allowfullscreen></iframe>`;
   }
+  
   return card;
 }
 
